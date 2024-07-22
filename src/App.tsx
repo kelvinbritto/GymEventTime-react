@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from "react-router-dom";
+import Home from "./paginas/Home";
+import PaginaBaseAdmin from "./paginas/Administracao/PaginaBaseAdmin";
+import AdminProfessores from "./paginas/Administracao/Professores/AdminProfessores";
+import AdminModalidades from "./paginas/Administracao/Modalidades/AdminModalidades";
+import AdminAulas from "./paginas/Administracao/Aulas/AdminAulas";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return(
+		<Routes>
+			<Route path="/" element={<Home />} />
+			<Route path="/admin" element={<PaginaBaseAdmin />}>
+				<Route path="aulas" element={<AdminAulas />} />
+				<Route path="professores" element={<AdminProfessores />} />
+				<Route path="modalidades" element={<AdminModalidades />} />
+			</Route>
+		</Routes>
+	)
 }
 
 export default App;
+
